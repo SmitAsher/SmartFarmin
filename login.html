@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>SmartFarmin Login</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <!-- Include Firebase JS SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>SmartFarmin</h1>
+      <p>Welcome to Smart Farming Solutions</p>
+    </header>
+    <main>
+      <div class="form-container">
+        <h2>Login</h2>
+        <input type="email" id="email" placeholder="Email" />
+        <input type="password" id="password" placeholder="Password" />
+        <button onclick="login()">Login</button>
+        <p>Don't have an account? <a href="/register.html">Register here</a></p>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2025 SmartFarmin. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Your Firebase configuration (replace with your actual config)
+    const firebaseConfig = {
+        apiKey: "AIzaSyCzD6odf4tp1V-1ncS2npIbPRVR5fKHrc8",
+        authDomain: "smartfarmin.firebaseapp.com",
+        projectId: "smartfarmin",
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    async function login() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      try {
+        const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
+        const user = userCredential.user;
+        // Retrieve the Firebase ID token
+        const idToken = await user.getIdToken();
+
+        // Send the token to the backend so it can be set as an HTTP-only cookie
+        await fetch('/setToken', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token: idToken })
+        });
+
+        // Redirect to the home page (the cookie will be sent automatically)
+        window.location.href = '/home';
+      } catch (error) {
+        console.error('Login error:', error);
+        if (error.code === 'auth/user-not-found') {
+          alert('No account found with this email. Please register first.');
+        } else {
+          alert('Login failed: ' + error.message);
+        }
+      }
+    }
+  </script>
+</body>
+</html>
