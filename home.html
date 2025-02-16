@@ -6,17 +6,42 @@
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>SmartFarmin</h1>
-    </header>
-    <main>
-      <h2>Welcome to the SmartFarmin Home Page!</h2>
-      <p>You are logged in.</p>
-    </main>
-    <footer>
-      <p>&copy; 2025 SmartFarmin. All rights reserved.</p>
-    </footer>
+  <div class="home-wrapper" id="homeWrapper">
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <nav>
+        <ul>
+          <li><a href="/home">Home</a></li>
+          <li><a href="/sensors">Sensors</a></li>
+          <li><a href="/machine-learning">Machine Learning</a></li>
+          <li><a href="/about">About Us</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Main content (currently empty) -->
+    <div class="content">
+      <!-- Future home page content goes here -->
+    </div>
   </div>
+
+  <!-- Toggle Button always visible -->
+  <button class="sidebar-toggle" id="sidebarToggle">
+    <div class="toggle-lines">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </div>
+  </button>
+
+  <script>
+    // Toggle the collapsed state of the sidebar
+    const homeWrapper = document.getElementById('homeWrapper');
+    const toggle = document.getElementById('sidebarToggle');
+
+    toggle.addEventListener('click', () => {
+      homeWrapper.classList.toggle('collapsed');
+    });
+  </script>
 </body>
 </html>
