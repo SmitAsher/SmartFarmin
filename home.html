@@ -1,44 +1,139 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
-  <title>SmartFarmin Home</title>
-  <link rel="stylesheet" href="/styles.css" />
+  <meta charset="UTF-8">
+  <title>SmartFarmin - Home</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+  <!-- Main Wrapper for Sidebar + Content -->
   <div class="home-wrapper" id="homeWrapper">
-    <!-- Sidebar -->
+    
+    <!-- Collapsible Sidebar -->
     <div class="sidebar" id="sidebar">
       <nav>
         <ul>
-          <li><a href="/home">Home</a></li>
-          <li><a href="/sensors">Sensors</a></li>
-          <li><a href="/machine-learning">Machine Learning</a></li>
-          <li><a href="/about">About Us</a></li>
+          <li><a href="/home.html">Home</a></li>
+          <li><a href="/sensors.html">Sensors</a></li>
+          <li><a href="/machine-learning.html">Machine Learning</a></li>
+          <li><a href="/about.html">About Us</a></li>
         </ul>
       </nav>
     </div>
-
-    <!-- Main content (currently empty) -->
+    
+    <!-- Main Content Area -->
     <div class="content">
-      <!-- Future home page content goes here -->
-    </div>
-  </div>
+      
+      <!-- Toggle Button -->
+      <button class="sidebar-toggle" id="sidebarToggle">
+        <div class="toggle-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </button>
+      
+      <!-- Header / Branding -->
+      <header class="main-header">
+        <h1>SmartFarmin</h1>
+        <p>Smart Farming Solutions for a Sustainable Future</p>
+      </header>
+      
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-text">
+          <h2>Revolutionizing Agriculture with Technology</h2>
+          <p>Embrace a sustainable future with our cutting-edge smart farming techniques.</p>
+        </div>
+      </section>
+      
+      <!-- Our Services Section -->
+      <section class="services">
+        <h2>Our Services</h2>
+        
+        <div class="service">
+          <h3>Automatic Irrigation System</h3>
+          <p>
+            Our automatic irrigation system leverages a precise water level sensor that continuously monitors your water reservoir. Once the tank is detected to be full, the system seamlessly allows water to enter, ensuring a consistent supply. This intelligent process minimizes manual oversight and prevents overflow, guaranteeing efficient and reliable irrigation for your crops.
+          </p>
+        </div>
+        
+        <div class="service">
+          <h3>Soil Moisture Monitoring</h3>
+          <p>
+            With our advanced soil moisture monitoring solution, sensors are embedded in the field to measure the moisture content in real time. When the soil begins to dry, the system promptly activates the irrigation process to draw water from the tank. This dynamic approach not only conserves water but also fosters optimal hydration, ensuring your plants thrive with the ideal moisture balance.
+          </p>
+        </div>
+        
+        <div class="service">
+          <h3>Greenhouse Rain Protection</h3>
+          <p>
+            To protect your crops from unpredictable weather, our greenhouse is equipped with a state-of-the-art rain sensor. As soon as rain is detected, the system automatically closes the greenhouse, preventing excess water from entering and damaging your valuable plants. This proactive measure maintains a stable environment and safeguards your investment during inclement weather.
+          </p>
+        </div>
+        
+        <div class="service">
+          <h3>Climate Monitoring</h3>
+          <p>
+            Utilizing the DHT11 sensor, our climate monitoring system continuously tracks ambient temperature and humidity. By integrating this climatic data with soil moisture readings, the system makes precise decisions on when to dispense water. This ensures that your crops receive just the right amount of hydration based on both weather conditions and soil needs, optimizing growth and reducing waste.
+          </p>
+        </div>
+      </section>
 
-  <!-- Toggle Button always visible -->
-  <button class="sidebar-toggle" id="sidebarToggle">
-    <div class="toggle-lines">
-      <span class="line"></span>
-      <span class="line"></span>
-      <span class="line"></span>
-    </div>
-  </button>
+      <!-- Future Services Section -->
+      <section class="services">
+        <h2>Future Services</h2>
 
+        <div class="service">
+          <h3>Rodent Detection with AI</h3>
+          <p>
+            Our upcoming AI-driven rodent detection system uses an ESP32-CAM module to monitor your farm in real time. The system will identify rodent activity using machine learning algorithms and alert farmers immediately, helping to prevent crop damage and maintain a pest-free environment.
+          </p>
+        </div>
+
+        <div class="service">
+          <h3>Weather Prediction</h3>
+          <p>
+            By leveraging AI-powered weather prediction models, our system will provide real-time forecasts tailored for farmers. These predictions will help in making informed decisions about irrigation, harvesting, and crop protection against extreme weather conditions.
+          </p>
+        </div>
+
+        <div class="service">
+          <h3>Plant Health Monitoring</h3>
+          <p>
+            Future enhancements will include AI-based plant health analysis, detecting early signs of disease, nutrient deficiencies, and pest infestations. By analyzing images and sensor data, the system will provide actionable insights, enabling proactive crop management.
+          </p>
+        </div>
+      </section>
+      
+      <!-- Expanded Description Section with Helpful Tips -->
+     <!-- Expanded Description Section with Helpful Tips -->
+    <section class="description">
+         <h2>About Our System</h2>
+         <p>
+            At SmartFarmin, we are pioneering smart farming techniques to optimize water usage and enhance crop yield. Our integrated system monitors water levels, soil moisture, rain conditions, and climatic data to determine the exact water needs of your plants. By combining these advanced sensors, we ensure water is dispensed only when necessary—promoting sustainability and reducing waste.
+          </p>
+         <div class="tips">
+           <p>For real-time insights:</p>
+           <ul>
+         <li><strong>Machine Learning:</strong> To watch the live ML feed of your farm, press the <strong>Machine Learning</strong> button in the menu.</li>
+            <li><strong>Sensor Data:</strong> To view detailed sensor data, click on the <strong>Sensors</strong> button.</li>
+         </ul>
+         </div>
+     </section>
+  
+      
+      <!-- Footer -->
+      <footer class="main-footer">
+        <p>&copy; 2025 SmartFarmin. All rights reserved.</p>
+      </footer>
+    </div> <!-- End of .content -->
+  </div> <!-- End of .home-wrapper -->
+  
   <script>
-    // Toggle the collapsed state of the sidebar
+    // Toggle the collapsed state of the sidebar when clicking the toggle button
     const homeWrapper = document.getElementById('homeWrapper');
     const toggle = document.getElementById('sidebarToggle');
-
     toggle.addEventListener('click', () => {
       homeWrapper.classList.toggle('collapsed');
     });

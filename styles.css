@@ -1,45 +1,48 @@
-/* Global Reset and Styles */
+/* ---------------- GLOBAL RESET AND BASE ---------------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  body {
+}
+
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: url('/background.jpg') no-repeat center center fixed;
-    background-size: cover;
     color: #333;
     line-height: 1.6;
-    margin: 0;
-  }
-  
-  /* General Container for Login and Register Pages */
-  .container {
+    /* Changed to use a full-page background image for all pages */
+    background: url('/images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* ---------- STYLES FOR LOGIN/REGISTER PAGES ---------- */
+/* 
+   If your login.html/register.html use a .container class, 
+   these styles won't conflict with the Home page 
+*/
+.container {
     max-width: 500px;
     margin: 50px auto;
     padding: 20px;
     background: #fff;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Form Container Styles (Used in Login/Register) */
-  .form-container {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.form-container {
     display: flex;
     flex-direction: column;
     gap: 15px;
-  }
-  
-  .form-container input[type="email"],
-  .form-container input[type="password"] {
+}
+
+.form-container input[type="email"],
+.form-container input[type="password"] {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1em;
-  }
-  
-  .form-container button {
+}
+
+.form-container button {
     padding: 10px;
     background: #2e7d32;
     color: #fff;
@@ -48,81 +51,81 @@
     font-size: 1.1em;
     cursor: pointer;
     transition: background 0.3s ease;
-  }
-  
-  .form-container button:hover {
+}
+
+.form-container button:hover {
     background: #1b5e20;
-  }
-  
-  footer {
+}
+
+footer {
     text-align: center;
     margin-top: 20px;
     font-size: 0.9em;
     color: #777;
-  }
-  
-  /* Home Page Specific Styles */
-  .home-wrapper {
+}
+
+/* ---------- HOME PAGE WITH COLLAPSIBLE SIDEBAR ---------- */
+.home-wrapper {
     display: flex;
-  }
-  
-  /* Sidebar Styles */
-  .home-wrapper .sidebar {
+    max-width: 1400px; /* Increase as needed */
+    margin: 0 auto;
+    background: #fff;  /* White background for the content area */
+    position: relative; 
+}
+
+/* Collapsible Sidebar */
+.sidebar {
     position: fixed;
     left: 0;
     top: 0;
-    height: 100%;
     width: 250px;
+    height: 100%;
     background-color: #2e7d32;
     color: #fff;
     transition: transform 0.3s ease;
     transform: translateX(0);
     z-index: 500;
-    padding-top: 60px;  /* Slight padding from the top */
-  }
-  
-  .home-wrapper.collapsed .sidebar {
+    padding-top: 60px; /* Space from the top for the toggle button if needed */
+}
+
+.home-wrapper.collapsed .sidebar {
     transform: translateX(-100%);
-  }
-  
-  /* Sidebar Navigation */
-  .home-wrapper .sidebar nav {
-    margin-top: 20px;  /* Position nav a little below the toggle button */
-  }
-  
-  .home-wrapper .sidebar nav ul {
+}
+
+.sidebar nav ul {
     list-style: none;
     padding: 0;
-  }
-  
-  .home-wrapper .sidebar nav ul li {
+}
+
+.sidebar nav ul li {
     padding: 15px 20px;
-  }
-  
-  .home-wrapper .sidebar nav ul li a {
+}
+
+.sidebar nav ul li a {
     color: #fff;
     text-decoration: none;
     display: block;
-  }
-  
-  /* Content Area */
-  .home-wrapper .content {
+}
+
+/* Main Content Area (to the right of sidebar) */
+.content {
     margin-left: 250px;
     transition: margin-left 0.3s ease;
     padding: 20px;
     width: 100%;
-  }
-  
-  .home-wrapper.collapsed .content {
+    min-height: 100vh; /* Ensure it spans the full page height */
+}
+
+.home-wrapper.collapsed .content {
     margin-left: 0;
-  }
-  
-  /* Toggle Button Styles */
-  .sidebar-toggle {
+}
+
+/* Toggle Button */
+.sidebar-toggle {
     position: fixed;
     top: 10px;
     left: 10px;
-    background-color: #fff;      /* White circle */
+    background-color: #fff;  /* White circle */
     border: none;
     border-radius: 50%;
     width: 50px;
@@ -134,22 +137,167 @@
     align-items: center;
     justify-content: center;
     padding: 5px;
-  }
-  
-  /* Toggle Lines (Hamburger Icon) */
-  .toggle-lines {
+}
+
+.toggle-lines {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 24px;  /* Adjust width as needed */
-    height: 18px; /* Adjust height for spacing */
+    width: 24px;
+    height: 18px;
+}
+
+.line {
+    width: 100%;
+    height: 2px;
+    background-color: #000;  /* Black lines */
+    border-radius: 1px;
+}
+
+/* ---------- HOME PAGE CONTENT SECTIONS ---------- */
+/* Header / Branding */
+.main-header {
+    text-align: center;
+    padding: 20px;
+    background: #2e7d32;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.main-header h1 {
+    font-size: 2.5em;
+    margin-bottom: 5px;
+}
+
+.main-header p {
+    font-size: 1.2em;
+}
+
+/* Hero Section (background image in CSS) */
+.hero {
+    position: relative;
+    height: 300px; /* Adjust as needed */
+    background: url('/images/farm.jpg') no-repeat center center;
+    background-size: cover;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-text {
+    text-align: center;
+    color: #fff;
+    background: rgba(0,0,0,0.5); /* Slight overlay for readability */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.hero-text h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.hero-text p {
+    font-size: 1.1em;
+}
+
+/* Services Section */
+.services {
+    padding: 40px 20px;
+    background: #f9f9f9;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.services h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2e7d32;
+}
+
+.service {
+    margin-bottom: 20px;
+}
+
+.service h3 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+/* Description Section */
+.description {
+    padding: 40px 20px;
+    background: #fff;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.description h2 {
+    text-align: center;
+    color: #2e7d32;
+    margin-bottom: 20px;
+}
+
+.description p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Footer */
+.main-footer {
+    background: #2e7d32;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9em;
+    border-radius: 5px;
+}
+
+/* ---------- RESPONSIVE ADJUSTMENTS ---------- */
+@media (max-width: 768px) {
+    .content {
+        margin-left: 0; /* So content can fill screen on small devices */
+    }
+  
+    .main-header h1 {
+        font-size: 1.8em;
+    }
+  
+    .hero {
+        height: 200px;
+    }
+  
+    .hero-text h2 {
+        font-size: 1.5em;
+    }
+  
+    .hero-text p {
+        font-size: 1em;
+    }
+}
+.tips {
+    margin-top: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left; /* or center if you prefer */
   }
   
-  /* Hamburger Lines */
-  .line {
-    width: 100%;       /* All lines will be the same width (24px) */
-    height: 2px;       /* Smaller thickness for a subtle look */
-    background-color: #000;  /* Black lines */
-    border-radius: 1px;      /* Slightly rounded corners */
+  .tips p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
   }
+  
+  .tips ul {
+    list-style: disc inside;
+    padding-left: 20px;
+  }
+  
+  .tips li {
+    margin-bottom: 5px;
+  }
+  

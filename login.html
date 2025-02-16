@@ -8,7 +8,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
 </head>
-<body>
+<body class="login-page">
   <div class="container">
     <header>
       <h1>SmartFarmin</h1>
@@ -31,9 +31,9 @@
   <script>
     // Your Firebase configuration (replace with your actual config)
     const firebaseConfig = {
-        apiKey: "AIzaSyCzD6odf4tp1V-1ncS2npIbPRVR5fKHrc8",
-        authDomain: "smartfarmin.firebaseapp.com",
-        projectId: "smartfarmin",
+      apiKey: "AIzaSyCzD6odf4tp1V-1ncS2npIbPRVR5fKHrc8",
+      authDomain: "smartfarmin.firebaseapp.com",
+      projectId: "smartfarmin",
     };
 
     // Initialize Firebase
@@ -55,8 +55,8 @@
           body: JSON.stringify({ token: idToken })
         });
 
-        // Redirect to the home page (the cookie will be sent automatically)
-        window.location.href = '/home';
+        // Redirect to the home page
+        window.location.href = '/home.html';
       } catch (error) {
         console.error('Login error:', error);
         if (error.code === 'auth/user-not-found') {
